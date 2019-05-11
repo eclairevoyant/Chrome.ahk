@@ -1,5 +1,3 @@
-SetBatchLines, -1
-
 #Include ../Chrome.ahk
 
 TestPages := 3
