@@ -102,7 +102,7 @@
 	*/
 	Kill()
 	{
-		Process, Close, % this.PID
+		ProcessClose(this.PID)
 	}
 	
 	/*
