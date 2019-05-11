@@ -53,7 +53,7 @@ Loop TestPages
 	DataURLs.Push(Format(DataURL, A_Index))
 
 ; Open Chrome with those pages
-FileCreateDir, ChromeProfile
+DirCreate(ChromeProfile)
 ChromeInst := new Chrome("ChromeProfile", DataURLs)
 
 

@@ -5,7 +5,7 @@ SetBatchLines, -1
 
 ; --- Create a new headless Chrome instance ---
 
-FileCreateDir, ChromeProfile
+DirCreate(ChromeProfile)
 ChromeInst := new Chrome("ChromeProfile", "https://example.com", "--headless")
 
 

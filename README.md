@@ -51,7 +51,7 @@ Once an instance of the class `Chrome` has been created, Google Chrome will be l
 
 ; Create an instance of the Chrome class using
 ; the folder ChromeProfile to store the user profile
-FileCreateDir, ChromeProfile
+DirCreate(ChromeProfile)
 ChromeInst := new Chrome("ChromeProfile")
 
 ; Connect to the newly opened tab and navigate to another website

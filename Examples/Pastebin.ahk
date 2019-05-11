@@ -7,7 +7,7 @@ SetBatchLines, -1
 
 ; Instead of providing a URL here, let's try
 ; navigating later for demonstration purposes
-FileCreateDir, ChromeProfile
+DirCreate(ChromeProfile)
 ChromeInst := new Chrome("ChromeProfile")
 
 
