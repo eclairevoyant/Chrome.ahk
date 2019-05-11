@@ -20,7 +20,7 @@ else
 	
 	Loop
 	{
-		InputBox JS,,
+		JS := InputBox()
 		( LTrim
 		Enter some JavaScript to be run on the page, or leave blank to exit. For example:
 		

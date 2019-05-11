@@ -1,7 +1,7 @@
 [submodule "lib/WebSocket.ahk"]
 	path = lib/WebSocket.ahk
-	url = https://github.com/G33kDude/WebSocket.ahk.git
+	url = git@github.com:eclairevoyant/WebSocket.ahk.git
 [submodule "lib/AutoHotkey-JSON"]
 	path = lib/AutoHotkey-JSON
-	url = https://github.com/G33kDude/AutoHotkey-JSON.git
+	url = git@github.com:eclairevoyant/AutoHotkey-JSON.git
 	branch = boolean
