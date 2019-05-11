@@ -50,7 +50,7 @@ JS =
 
 ; Define an array of pages to open
 DataURLs := []
-Loop, %TestPages%
+Loop TestPages
 	DataURLs.Push(Format(DataURL, A_Index))
 
 ; Open Chrome with those pages
@@ -61,7 +61,7 @@ ChromeInst := new Chrome("ChromeProfile", DataURLs)
 ; --- Connect to the pages ---
 
 PageInstances := []
-Loop, %TestPages%
+Loop TestPages
 {
 	; Bind the page number to the function for extra information in the callback
 	BoundCallback := Func("Callback").Bind(A_Index)
@@ -69,7 +69,7 @@ Loop, %TestPages%
 	; Get an instance of the page, passing in the callback function
 	if !(PageInst := ChromeInst.GetPageByTitle(A_Index, "contains",, BoundCallback))
 	{
-		MsgBox, Could not retrieve page %A_Index%!
+		MsgBox("Could not retrieve page " . A_Index . "!")
 		ChromeInst.Kill()
 		ExitApp
 	}
@@ -81,7 +81,7 @@ Loop, %TestPages%
 	PageInst.Evaluate(JS)
 }
 
-MsgBox, Running... Click OK to exit
+MsgBox("Running... Click OK to exit")
 
 
 ; --- Close the Chrome instance ---
@@ -106,6 +106,6 @@ Callback(PageNum, Event)
 		; Strip out the leading AHK:
 		Text := SubStr(Event.params.message.text, 5)
 		
-		ToolTip, Clicked %Text% times on page %PageNum%
+		ToolTip("Clicked " . Text . " times on page " . PageNum)
 	}
 }

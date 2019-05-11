@@ -14,7 +14,7 @@ ChromeInst := new Chrome("ChromeProfile", "https://autohotkey.com/")
 
 if !(PageInst := ChromeInst.GetPage())
 {
-	MsgBox, Could not retrieve page!
+	MsgBox("Could not retrieve page!")
 	ChromeInst.Kill()
 }
 else
@@ -23,7 +23,7 @@ else
 	
 	Loop
 	{
-		InputBox, JS,,
+		InputBox JS,,
 		( LTrim
 		Enter some JavaScript to be run on the page, or leave blank to exit. For example:
 		
@@ -38,7 +38,7 @@ else
 			Result := PageInst.Evaluate(JS)
 		catch e
 		{
-			MsgBox, % "Exception encountered in " e.What ":`n`n"
+			MsgBox "Exception encountered in " e.What ":`n`n"
 			. e.Message "`n`n"
 			. "Specifically:`n`n"
 			. Chrome.Jxon_Dump(Chrome.Jxon_Load(e.Extra), "`t")
@@ -46,7 +46,7 @@ else
 			continue
 		}
 		
-		MsgBox, % "Result:`n" Chrome.Jxon_Dump(Result, "`t")
+		MsgBox "Result:`n" Chrome.Jxon_Dump(Result, "`t")
 	}
 	
 	

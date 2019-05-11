@@ -16,7 +16,7 @@ ChromeInst := new Chrome("ChromeProfile")
 
 if !(PageInst := ChromeInst.GetPage())
 {
-	MsgBox, Could not retrieve page!
+	MsgBox("Could not retrieve page!")
 	ChromeInst.Kill()
 }
 else
@@ -58,7 +58,7 @@ else
 	PageInst.Evaluate("editor.setValue('test');")
 	PageInst.Evaluate("document.querySelector('input[type=submit]').click();")
 	PageInst.WaitForLoad()
-	MsgBox, % "A new paste has been created at "
+	MsgBox "A new paste has been created at "
 	. PageInst.Evaluate("window.location.href").value
 	
 	

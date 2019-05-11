@@ -14,7 +14,7 @@ ChromeInst := new Chrome("ChromeProfile", "https://example.com", "--headless")
 
 if !(PageInst := ChromeInst.GetPage())
 {
-	MsgBox, Could not retrieve page!
+	MsgBox("Could not retrieve page!")
 	ChromeInst.Kill()
 }
 else
@@ -35,7 +35,7 @@ else
 	FileOpen(FileName, "w").RawWrite(BinaryPDF, Size)
 	
 	; Open the file
-	Run, %FileName%
+	Run(FileName)
 	
 	
 	; --- Close the Chrome instance ---

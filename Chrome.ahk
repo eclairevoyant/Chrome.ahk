@@ -67,9 +67,9 @@
 		
 		; Verify ChromePath
 		if (ChromePath == "")
-			FileGetShortcut, %A_StartMenuCommon%\Programs\Google Chrome.lnk, ChromePath
+			FileGetShortcut(A_StartMenuCommon . "\Programs\Google Chrome.lnk", ChromePath)
 		if (ChromePath == "")
-			RegRead, ChromePath, HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
+			RegRead(ChromePath, "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe")
 		if !FileExist(ChromePath)
 			throw Exception("Chrome could not be found")
 		this.ChromePath := ChromePath
@@ -88,7 +88,7 @@
 		for Index, URL in IsObject(URLs) ? URLs : [URLs]
 			URLString .= " " this.CliEscape(URL)
 		
-		Run, % this.CliEscape(ChromePath)
+		Run this.CliEscape(ChromePath)
 		. " --remote-debugging-port=" this.DebugPort
 		. (ProfilePath ? " --user-data-dir=" this.CliEscape(ProfilePath) : "")
 		. (Flags ? " " Flags : "")
@@ -199,7 +199,7 @@
 			this.ws.__New(wsurl)
 			
 			while !this.Connected
-				Sleep, 50
+				Sleep 50
 		}
 		
 		/*
@@ -240,7 +240,7 @@
 			; Wait for the response
 			this.responses[ID] := False
 			while !this.responses[ID]
-				Sleep, 50
+				Sleep 50
 			
 			; Get the response, check if it's an error
 			response := this.responses.Delete(ID)
@@ -288,7 +288,7 @@
 		WaitForLoad(DesiredState:="complete", Interval:=100)
 		{
 			while this.Evaluate("document.readyState").value != DesiredState
-				Sleep, Interval
+				Sleep Interval
 		}
 		
 		/*
@@ -306,7 +306,7 @@
 			{
 				this.Connected := True
 				BoundKeepAlive := this.BoundKeepAlive
-				SetTimer, %BoundKeepAlive%, 15000
+				SetTimer(BoundKeepAlive, 15000)
 			}
 			else if (EventName == "Message")
 			{
@@ -314,7 +314,7 @@
 				
 				; Run the callback routine
 				fnCallback := this.fnCallback
-				if (newData := %fnCallback%(data))
+				if (newData := fnCallback(data))
 					data := newData
 				
 				if this.responses.HasKey(data.ID)
@@ -324,7 +324,7 @@
 			{
 				this.Disconnect()
 				fnClose := this.fnClose
-				%fnClose%(this)
+				fnClose(this)
 			}
 		}
 		
@@ -345,7 +345,7 @@
 			this.ws.Disconnect()
 			
 			BoundKeepAlive := this.BoundKeepAlive
-			SetTimer, %BoundKeepAlive%, Delete
+			SetTimer(BoundKeepAlive, Delete)
 			this.Delete("BoundKeepAlive")
 		}
 		
