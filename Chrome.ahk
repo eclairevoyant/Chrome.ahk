@@ -258,7 +258,7 @@ class Chrome
 		*/
 		Evaluate(JS)
 		{
-			response := this.Call("Runtime.evaluate",
+			response := this.Call("Runtime.evaluate","
 			( LTrim Join
 			{
 				"expression": JS,
@@ -269,7 +269,7 @@ class Chrome
 				"userGesture": Chrome.Jxon_True(),
 				"awaitPromise": Chrome.Jxon_False()
 			}
-			))
+			)")
 			
 			if (response.exceptionDetails)
 				throw Exception(response.result.description, -1
