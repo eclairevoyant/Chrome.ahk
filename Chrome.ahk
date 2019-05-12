@@ -314,7 +314,7 @@
 				
 				; Run the callback routine
 				fnCallback := this.fnCallback
-				if (newData := fnCallback(data))
+				if (newData := %fnCallback%(data))
 					data := newData
 				
 				if this.responses.HasKey(data.ID)
@@ -324,7 +324,7 @@
 			{
 				this.Disconnect()
 				fnClose := this.fnClose
-				fnClose(this)
+				%fnClose%(this)
 			}
 		}
 		
