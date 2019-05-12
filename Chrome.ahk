@@ -1,4 +1,4 @@
-﻿class Chrome
+class Chrome
 {
 	static DebugPort := 9222
 	
@@ -61,7 +61,7 @@
 	__New(ProfilePath:="", URLs:="about:blank", Flags:="", ChromePath:="", DebugPort:="")
 	{
 		; Verify ProfilePath
-		if (ProfilePath != "" && !InStr(FileExist(ProfilePath), "D"))
+		if (ProfilePath != "" && !DirExist(ProfilePath))
 			throw Exception("The given ProfilePath does not exist")
 		this.ProfilePath := ProfilePath
 		
