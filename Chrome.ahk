@@ -89,11 +89,11 @@ class Chrome
 			URLString .= " " this.CliEscape(URL)
 		
 		Run this.CliEscape(ChromePath)
-		. " --remote-debugging-port=" this.DebugPort
-		. (ProfilePath ? " --user-data-dir=" this.CliEscape(ProfilePath) : "")
-		. (Flags ? " " Flags : "")
-		. URLString
-		,,, OutputVarPID
+			. " --remote-debugging-port=" this.DebugPort
+			. (ProfilePath ? " --user-data-dir=" this.CliEscape(ProfilePath) : "")
+			. (Flags ? " " Flags : "")
+			. URLString
+			,,, OutputVarPID
 		this.PID := OutputVarPID
 	}
 	
