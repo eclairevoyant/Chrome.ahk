@@ -6,7 +6,7 @@ TestPages := 3
 ; --- Define a data URL for the test page ---
 
 ; https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
-DataURL =
+DataURL := "
 ( Comments
 data:Text/html, ; This line makes it a URL
 <!DOCTYPE html>
@@ -19,12 +19,12 @@ data:Text/html, ; This line makes it a URL
 		<button class="someclass">Click Me!</button>
 	</body>
 </html>
-)
+)"
 
 
 ; --- Define some JavaScript to be injected into each page ---
 
-JS =
+JS := "
 ( Comments
 ; Using a self-invoking anonymous function for scope management
 ; https://blog.mgechev.com/2012/08/29/self-invoking-functions-in-javascript-or-immediately-invoked-function-expression/
@@ -40,7 +40,7 @@ JS =
 		console.log("AHK:" + clickCount);
 	};
 })();
-)
+)"
 
 
 ; --- Create a new Chrome instance ---
@@ -51,7 +51,7 @@ Loop TestPages
 	DataURLs.Push(Format(DataURL, A_Index))
 
 ; Open Chrome with those pages
-DirCreate(ChromeProfile)
+DirCreate("ChromeProfile")
 ChromeInst := new Chrome("ChromeProfile", DataURLs)
 
 
