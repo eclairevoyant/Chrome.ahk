@@ -7,7 +7,7 @@
 	*/
 	CliEscape(Param)
 	{
-		return """" RegExReplace(Param, "(\\*)""", "$1$1\""") """"
+		return '""' . RegExReplace(Param, '(\\*)"', '$1$1\"') . '""'
 	}
 	
 	/*
