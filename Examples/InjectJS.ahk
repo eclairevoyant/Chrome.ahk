@@ -20,13 +20,13 @@ else
 	
 	Loop
 	{
-		JS := InputBox()
+		JS := InputBox("
 		( LTrim
 		Enter some JavaScript to be run on the page, or leave blank to exit. For example:
 		
 		alert('hi');
 		window.location = "https://p.ahkscript.org/";
-		)
+		)")
 		
 		if (JS == "" || ErrorLevel)
 			break
