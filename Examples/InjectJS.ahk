@@ -3,7 +3,7 @@
 
 ; --- Create a new Chrome instance ---
 
-DirCreate(ChromeProfile)
+DirCreate("ChromeProfile")
 ChromeInst := new Chrome("ChromeProfile", "https://autohotkey.com/")
 
 
